@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pincode Submission Form</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-image: url('/static/images/pincode.jpeg');
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      
+
+      form {
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 20px;
+        margin: 50px auto;
+        max-width: 500px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      input[type="text"] {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
+        box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      input[type="text"]:invalid {
+        border: 1px solid red;
+      }
+
+      input[type="text"]:valid {
+        border: 1px solid green;
+      }
+
+      button[type="submit"] {
+        background-color: #4CAF50;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
+
+      .next-page {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .next-page a {
+        color: #4CAF50;
+        text-decoration: none;
+      }
+
+      .next-page a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <form method="post" action="{% url 'pincode_search' %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <label for="pincode">Enter Pincode:</label>
+      <input type="text" id="pincode" name="pincode" pattern="[0-9]*" required>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
